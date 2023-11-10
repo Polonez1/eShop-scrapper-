@@ -7,9 +7,15 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
         for item in response.css("div.GRID_ITEM"):
+            categories = {}
+            for li in item.css("div.spec-shortcuts ul li"):
+                cat = li.css("::text").get()
+                name = li.css("a span::text").get()
+                categories[cat] = name
+
             yield {
                 "name": item.css("div.product-info div.product-title a::text").get(),
-                "category": item.css("div.spec-shortcuts ul li a span::text").get(),
+                "categories": categories,
             }
 
 

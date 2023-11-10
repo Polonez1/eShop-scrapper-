@@ -37,5 +37,5 @@ class QuotesSpider(scrapy.Spider):
             yield response.follow(full_url, self.parse)
 
 
-# scrapy crawl eshop_spider -o output.json
+# scrapy crawl eshop_spider -o output_discount.json
 #

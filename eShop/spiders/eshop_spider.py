@@ -15,8 +15,27 @@ class QuotesSpider(scrapy.Spider):
 
             yield {
                 "name": item.css("div.product-info div.product-title a::text").get(),
+                "price_eur": item.css(
+                    "div.price-container div.price-tag span span::text"
+                ).get(),
+                "price_cnt": item.css(
+                    "div.price-container div.price-tag span sup::text"
+                ).get(),
+                "discount": item.css(
+                    "div.price-container div.discount-line span::text"
+                ).get(),
                 "categories": categories,
             }
 
+        all_links = response.css("li.wide a.for-desktop::attr(href)").getall()
+
+        if len(all_links) >= 2 and "/ispardavimas/?p=" in all_links[1]:
+            next_page = all_links[1]
+
+        if next_page is not None:
+            full_url = response.urljoin(next_page)
+            yield response.follow(full_url, self.parse)
+
 
 # scrapy crawl eshop_spider -o output.json
+#

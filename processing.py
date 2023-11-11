@@ -11,6 +11,7 @@ def read_data(json_file: str):
     for item in data:
         product_data = {
             "name": item["name"],
+            "url": item["url"],
             "price_eur": item["price_eur"],
             "price_cnt": item["price_cnt"],
             "discount": item["discount"],
@@ -24,8 +25,8 @@ def read_data(json_file: str):
 
 
 def data_to_xlsx():
-    df = read_data(json_file="output_discount.json")
-    df.to_excel("varle_discount.xlsx")
+    df = read_data(json_file="_output_discount.json")
+    df.to_excel("_varle_discount.xlsx")
 
 
 if "__main__" == __name__:

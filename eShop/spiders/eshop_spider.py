@@ -15,6 +15,7 @@ class QuotesSpider(scrapy.Spider):
 
             yield {
                 "name": item.css("div.product-info div.product-title a::text").get(),
+                "url": item.css("div.img-container a::attr(href)").get(),
                 "price_eur": item.css(
                     "div.price-container div.price-tag span span::text"
                 ).get(),

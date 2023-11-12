@@ -8,6 +8,19 @@ Sample project for scraping data from e-shop and visualization with PBI. The pro
 - Processing python module (normalize and changes the .json file to .xlsx)
 - PBI report
 
+# Install Requirements
+
+```pip install -r requirements.txt```
+
+# Scrapp instruction
+
+Go to the
+```.\eShop\spiders\```
+
+run in terminal
+
+```scrapy crawl eshop_spider -o {you_output_name}.json```
+
 # Power BI
 
 - Buttons to switch filters

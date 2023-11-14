@@ -14,9 +14,6 @@ Sample project for scraping data from e-shop and visualization with PBI. The pro
 
 # Scrapp instruction
 
-Go to the
-```.\eShop\spiders\```
-
 run in terminal
 
 ```scrapy crawl eshop_spider -o {you_output_name}.json```
